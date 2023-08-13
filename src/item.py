@@ -49,8 +49,8 @@ class Item:
         self.price *= self.pay_rate
 
     @classmethod
-    def instantiate_from_csv(cls):
-        with open('../src/items.csv') as csvfile:
+    def instantiate_from_csv(cls, path):
+        with open(path) as csvfile:
             reader = csv.DictReader(csvfile, delimiter=",")
             for row in reader:
                 item = cls(row['name'], row['price'], row['quantity'])

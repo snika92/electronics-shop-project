@@ -30,15 +30,13 @@ def test_name(item_instance):
     assert item_instance.name == "Телесмартф"
 
 
-# Тест отрабатывает в pycharm, а в терминале выводит ошибку
-# "Нет такого файла или директории"
-#
-# def test_instantiate_from_csv(item_instance):
-#     item_instance.instantiate_from_csv()
-#     assert len(Item.all) == 6
+def test_instantiate_from_csv(item_instance):
+    path = 'C:/!Work/PycharmProjects/electronics-shop-project/src/items.csv'
+    item_instance.instantiate_from_csv(path)
+    assert item_instance.all[0].name == "Смартфон"
 
 
 def test_string_to_number(item_instance):
-    assert Item.string_to_number('5') == 5
-    assert Item.string_to_number('5.0') == 5
-    assert Item.string_to_number('5.5') == 5
+    assert item_instance.string_to_number('5') == 5
+    assert item_instance.string_to_number('5.0') == 5
+    assert item_instance.string_to_number('5.5') == 5
