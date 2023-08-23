@@ -1,6 +1,7 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import pytest
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
@@ -21,9 +22,6 @@ def test_apply_discount(item_instance):
 
 def test_name(item_instance):
     assert item_instance.name == "Смартфон"
-
-
-def test_name(item_instance):
     item_instance.name = "Телефон"
     assert item_instance.name == "Телефон"
     item_instance.name = "Телесмартфон"
@@ -48,3 +46,12 @@ def test_repr(item_instance):
 
 def test_str(item_instance):
     assert str(item_instance) == 'Смартфон'
+
+
+def test_add(item_instance):
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    assert item_instance + phone1 == 25
+    assert phone1 + phone1 == 10
+
+    with pytest.raises(ValueError):
+        phone1 + 10000

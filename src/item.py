@@ -65,3 +65,8 @@ class Item:
     def string_to_number(number):
         numbers = number.split(".")
         return int(number[0])
+
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return int(self.quantity) + int(other.quantity)
+        raise ValueError("Складывать можно только объекты Item и дочерние от них")
