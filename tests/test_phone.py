@@ -23,3 +23,4 @@ def test_number_of_sim(phone_instance):
 
     with pytest.raises(ValueError):
         phone_instance.number_of_sim = 0
+        phone_instance.number_of_sim = 0.9
