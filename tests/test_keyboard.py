@@ -8,7 +8,7 @@ def keyboard_instance():
 
 
 def test_repr(keyboard_instance):
-    assert repr(keyboard_instance) == "Keyboard('Dark Project KD87A', 9600, 5, EN)"
+    assert repr(keyboard_instance) == "Keyboard('Dark Project KD87A', 9600, 5)"
 
 
 def test_str(keyboard_instance):

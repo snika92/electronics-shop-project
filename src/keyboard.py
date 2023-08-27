@@ -22,10 +22,3 @@ class Keyboard(Item, MixinLang):
 
     def __init__(self, name, price, quantity):
         super().__init__(name, price, quantity)
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}('{self.name}', {self.price}, " \
-               f"{self.quantity}, {self.language})"
-
-    def __str__(self):
-        return f'{self.name}'
