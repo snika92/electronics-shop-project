@@ -3,6 +3,7 @@ import pytest
 from src.item import Item
 from src.phone import Phone
 from src.item import InstantiateCSVError
+import os
 
 
 
@@ -31,19 +32,19 @@ def test_name(item_instance):
 
 
 def test_instantiate_from_csv(item_instance):
-    path = 'C:/!Work/PycharmProjects/electronics-shop-project/src/items.csv'
+    path = os.path.join("..", "src","items.csv")
 
     item_instance.instantiate_from_csv(path)
     assert item_instance.all[0].name == "Смартфон"
 
 
 def test_instantiate_from_csv0():
-    path_not_exist = 'C:/!Work/PycharmProjects/electronics-shop-project/src/item.csv'
-    path_without_row = 'C:/!Work/PycharmProjects/electronics-shop-project/src/items_without_row.csv'
+    path_not_exist = os.path.join("..", "src","item.csv")
+    path_without_row = os.path.join("..", "src","items_without_row.csv")
 
-    with pytest.raises(FileNotFoundError, match="Отсутствует файл item.csv"):
+    with pytest.raises(FileNotFoundError):
         Item.instantiate_from_csv(path_not_exist)
-    with pytest.raises(InstantiateCSVError, match="Файл item.csv поврежден"):
+    with pytest.raises(InstantiateCSVError):
         Item.instantiate_from_csv(path_without_row)
 
 

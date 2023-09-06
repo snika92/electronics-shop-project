@@ -5,8 +5,8 @@ class InstantiateCSVError(Exception):
     def __init__(self, *args, **kwargs):
         self.message = "Файл item.csv поврежден"
 
-    # def __str__(self):
-    #     return self.message
+    def __str__(self):
+        return self.message
 
 
 class Item:
@@ -76,9 +76,7 @@ class Item:
                 for line in reader:
                     item = cls(line['name'], line['price'], line['quantity'])
         except FileNotFoundError:
-            print("Отсутствует файл item.csv")
-        except InstantiateCSVError as er:
-            print(er.message)
+            raise FileNotFoundError("Отсутствует файл item.csv")
 
     @staticmethod
     def string_to_number(number):
